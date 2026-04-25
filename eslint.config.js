@@ -1,9 +1,6 @@
 // npm install eslint-plugin-boundaries --save-dev
 
 
-
-
-
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import react from "eslint-plugin-react";
@@ -38,7 +35,7 @@ export default [
     },
     rules: {
       // =============================
-      // 🔥 Arquitectura y disciplina
+      // Arquitectura y disciplina
       // =============================
 
       // No lógica compleja en componentes
@@ -49,7 +46,7 @@ export default [
       "max-lines": ["error", 300],
 
       // =============================
-      // 🧠 React
+      // React
       // =============================
 
       "react/react-in-jsx-scope": "off",
@@ -60,7 +57,7 @@ export default [
       "react-hooks/exhaustive-deps": "warn",
 
       // =============================
-      // 🚫 Anti-patterns importantes
+      // Anti-patterns importantes
       // =============================
 
       // No imports sin usar
@@ -92,7 +89,7 @@ export default [
         },
       ],
 
-      // 🔥 MUY IMPORTANTE: evitar acoplamiento incorrecto
+      // MUY IMPORTANTE: evitar acoplamiento incorrecto
       "no-restricted-imports": [
         "error",
         {
@@ -112,7 +109,7 @@ export default [
       ],
 
       // =============================
-      // 🎯 Consistencia (pro-level)
+      // Consistencia (pro-level)
       // =============================
 
       // Ordenar imports automáticamente
@@ -125,7 +122,7 @@ export default [
       ],
 
       // =============================
-      // 🧪 Buenas prácticas
+      // Buenas prácticas
       // =============================
 
       // Evita console.log en producción
@@ -136,6 +133,36 @@ export default [
 
       // Evita condiciones confusas
       "no-unneeded-ternary": "error",
+
+      // Magic numbers
+      "no-magic-numbers": [
+        "warn",
+        { ignore: [0, 1], enforceConst: true },
+      ],
+
+      // Strings en JSX
+      "no-restricted-syntax": [
+        "warn",
+        {
+          selector: "Literal[value][parent.type='JSXAttribute']",
+          message: "Avoid hardcoded strings in JSX.",
+        },
+      ],
+
+      // Complejidad
+      complexity: ["error", 8],
+      "max-lines-per-function": ["error", 120],
+
+      // Imports controlados
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            "**/utils",
+            "**/constants",
+          ],
+        },
+      ],
     },
   },
 ];
